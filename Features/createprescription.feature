@@ -1,43 +1,48 @@
-Feature: Създаване на рецепта
+Feature: Create Order
 
-Scenario: Създаване на рецепта
-    Given Потребителят се намира на прозореца за създаване на рецепта
-    When Потребителят въведе име на лекуващ лекар "Dimitar"
-    And Потребителят въведе име на пациента "Baba Stoyana"
-    And Потребителят въведе днешна дата "2020-03-08"
-    And Потребителят добавя лекарство "лекарство1"
-    And Потребителят натиска бутона за създаване на рецепта
-    Then Подскача съобщение "Рецептата е създадена успешно"
+Scenario: Create Order
+    Given User navigated to the order entry panel
+    When User added his credentials
+    And User added vehicle "Toyota"
+    And User entered current date "2020-03-08"
+    And User entered price "10000"
+    And User entered Order Number "1583771"
+    And User presses the create order button
+    Then Messege Pop-up "Order accepted"
     
-Scenario: Създаване на рецепта без да въведе име на лекуващ лекар	
-		Given Потребителят се намира на прозореца за създаване на рецепта
-    When Потребителят въведе име на пациента "Baba Stoyana"
-    And Потребителят въведе днешна дата "2020-03-08"
-    And Потребителят добавя лекарство "лекарство1"
-    And Потребителят натиска бутона за създаване на рецепта
-    Then Подскача съобщение "Моля, въведете име на лекар"
+Scenario: Create Order without user
+    Given User navigated to the order entry panel
+    When User added vehicle "Toyota"
+    And User entered current date "2020-03-08"
+    And User entered price "10000"
+    And User entered Order Number\"135723"
+    And User presses the create order button
+    Then Messege Pop-up "Missing user"
     
-Scenario: Създаване на рецепта без да въведе име на пациент
-		Given Потребителят се намира на прозореца за създаване на рецепта
-    When Потребителят въведе име на лекуващ лекар "Dimitar"
-    And Потребителят въведе днешна дата "2020-03-08"
-    And Потребителят добавя лекарство "лекарство1"
-    And Потребителят натиска бутона за създаване на рецепта
-    Then Подскача съобщение "Моля, въведете име на пациент"
+Scenario: Create Order without vehicle
+    Given User navigated to the order entry panel
+    When User added his credentials
+    And User entered current date "2020-03-08"
+    And User entered price "10000"
+    And User entered Order Number "47895419"
+    And User presses the create order button
+    Then Messege Pop-up "Missing vehicle"
     
-Scenario: Създаване на рецепта без да въведе дата
-		Given Потребителят се намира на прозореца за създаване на рецепта
-    When Потребителят въведе име на лекуващ лекар "Dimitar"
-    And Потребителят въведе име на пациента "Baba Stoyana"
-    And Потребителят добавя лекарство "лекарство1"
-    And Потребителят натиска бутона за създаване на рецепта
-    Then Подскача съобщение "Моля, въведете дата"
-    
-  Scenario: Създаване на рецепта без да въведе лекарство
-		Given Потребителят се намира на прозореца за създаване на рецепта
-    When Потребителят въведе име на лекуващ лекар "Dimitar"
-    And Потребителят въведе име на пациента "Baba Stoyana"
-    And Потребителят въведе днешна дата "2020-03-08"
-    And Потребителят натиска бутона за създаване на рецепта
-    Then Подскача съобщение "Моля, въведете лекарство"
+Scenario: Create Order without date
+    Given User navigated to the order entry panel
+    When User added his credentials
+    And User added vehicle "Toyota"
+    And User entered price "10000"
+    And User entered Order Number "1583771"
+    And User presses the create order button
+    Then Messege Pop-up "Missing date"
+
+Scenario: Create Order without order number
+    Given User navigated to the order entry panel
+    When User added his credentials
+    And User added vehicle "Toyota"
+    And User entered current date "2020-03-08"
+    And User entered price "10000"
+    And User presses the create order button
+    Then Messege Pop-up "Missing order numuber"
     
